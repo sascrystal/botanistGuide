@@ -8,7 +8,7 @@ public class Plant implements Parcelable {
     private String plantingDate;
     private int wateringDays;
     private String description;
-    private int pictureId;
+    private Integer pictureId;
 
     public void setName(String name) {
         this.name = name;
@@ -56,7 +56,7 @@ public class Plant implements Parcelable {
         return description;
     }
 
-    public int getPictureId() {
+    public Integer getPictureId() {
         return pictureId;
     }
 

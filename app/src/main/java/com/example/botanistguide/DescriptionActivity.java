@@ -1,6 +1,7 @@
 package com.example.botanistguide;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.gson.Gson;
 
 public class DescriptionActivity extends AppCompatActivity {
     private Plant plant;
@@ -46,6 +49,15 @@ public class DescriptionActivity extends AppCompatActivity {
             plantingDays.setText("Дата посадки: "+plant.getPlantingDate());
         }
 
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(MainActivity.plantArrayList);
+        SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
+        prefs.edit().putString("plants_list", json).apply();
     }
 
 

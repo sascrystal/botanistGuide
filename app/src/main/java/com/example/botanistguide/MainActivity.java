@@ -1,6 +1,7 @@
 package com.example.botanistguide;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,10 +12,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Plant> plantArrayList = new ArrayList<>();
+    public static   ArrayList<Plant> plantArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
         });
         RecyclerView recyclerView = findViewById(R.id.recyclerViewPlant);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        plantArrayList.add(
-                new Plant("шиповник",14,"15",R.drawable.images));
+
+        plantArrayList.add(new Plant("шиповник",14,"15",R.drawable.images));
         plantArrayList.add(new Plant("Шишка", 11,"14",R.drawable.images));
+
         PlantRecyclerAdapter adapter = new PlantRecyclerAdapter(this, plantArrayList);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener((plant, position)->{
@@ -39,5 +43,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(plantArrayList);
+        SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
+        prefs.edit().putString("plants_list", json).apply();
+    }
+
+    public void addInPlantList(Plant plant){
+        plantArrayList.add(plant);
     }
 }

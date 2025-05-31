@@ -9,8 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
@@ -20,19 +19,17 @@
         android:layout_width="307dp"
         android:layout_height="20dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/plantingDate"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/plantingDate"
-        android:layout_width="312dp"
-        android:layout_height="17dp"
+        android:layout_width="307dp"
+        android:layout_height="20dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />

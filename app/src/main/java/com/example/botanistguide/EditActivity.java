@@ -1,9 +1,11 @@
 package com.example.botanistguide;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -12,8 +14,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.gson.Gson;
+
 public class EditActivity extends AppCompatActivity {
-    Plant plant;
+    private Plant plant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,15 @@ public class EditActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(MainActivity.plantArrayList);
+        SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
+        prefs.edit().putString("plants_list", json).apply();
+    }
 
     private void setPreviousData(){
         if(plant.getName() != null){
@@ -61,8 +74,14 @@ public class EditActivity extends AppCompatActivity {
         EditText wateringDays = findViewById(R.id.wateringDaysEdit);
         wateringDays.setText(String.valueOf(plant.getWateringDays()));
 
-        EditText description = findViewById(R.id.editDescription);
-
+        if(plant.getDescription() != null){
+            EditText description = findViewById(R.id.editDescription);
+            description.setText(plant.getDescription());
+        }
+        if(plant.getPictureId() != null){
+            ImageView imageView = findViewById(R.id.imageEdit);
+            imageView.setImageResource(plant.getPictureId());
+        }
 
     }
 
