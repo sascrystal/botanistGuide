@@ -25,7 +25,8 @@
                 android:id="@+id/textView_plant_name_desciption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textView_plant_date_desciption"
