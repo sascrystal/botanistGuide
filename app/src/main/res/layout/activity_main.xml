@@ -14,6 +14,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="161dp"
+        android:onClick="createButtonOnClick"
         android:text="Добавить новое растение"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

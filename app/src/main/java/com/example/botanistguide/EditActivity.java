@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.gson.Gson;
 
 public class EditActivity extends AppCompatActivity {
-    private Plant plant;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +29,29 @@ public class EditActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        plant = getIntent().getParcelableExtra("plant");
         setPreviousData();
+        id = getIntent().getIntExtra("id",0);
     }
     public void onClickEdit(View v){
         EditText name = findViewById(R.id.nameEdit);
-        plant.setName(name.getText().toString());
+        MainActivity.plantArrayList.get(id).setName(name.getText().toString());
 
         EditText wateringDays = findViewById(R.id.wateringDaysEdit);
         try {
-            plant.setWateringDays(Integer.parseInt(wateringDays.getText().toString()));
+            MainActivity.plantArrayList.get(id).setWateringDays(Integer.parseInt(wateringDays.getText().toString()));
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Количество дней должны быть числом", Toast.LENGTH_SHORT).show();
             return;
         }
 
         EditText plantingData = findViewById(R.id.editTextDate);
-        plant.setPlantingDate(plantingData.getText().toString());
+        MainActivity.plantArrayList.get(id).setPlantingDate(plantingData.getText().toString());
 
         EditText description = findViewById(R.id.editDescription);
-        plant.setDescription(description.getText().toString());
+        MainActivity.plantArrayList.get(id).setDescription(description.getText().toString());
 
         Intent intent = new Intent(EditActivity.this, DescriptionActivity.class);
-        intent.putExtra("plant", plant);
+        intent.putExtra("id", id);
         startActivity(intent);
 
 
@@ -67,20 +67,20 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void setPreviousData(){
-        if(plant.getName() != null){
+        if(MainActivity.plantArrayList.get(id).getName() != null){
             EditText name = findViewById(R.id.nameEdit);
-            name.setText(plant.getName());
+            name.setText(MainActivity.plantArrayList.get(id).getName());
         }
         EditText wateringDays = findViewById(R.id.wateringDaysEdit);
-        wateringDays.setText(String.valueOf(plant.getWateringDays()));
+        wateringDays.setText(String.valueOf(MainActivity.plantArrayList.get(id).getWateringDays()));
 
-        if(plant.getDescription() != null){
+        if(MainActivity.plantArrayList.get(id).getDescription() != null){
             EditText description = findViewById(R.id.editDescription);
-            description.setText(plant.getDescription());
+            description.setText(MainActivity.plantArrayList.get(id).getDescription());
         }
-        if(plant.getPictureId() != null){
+        if(MainActivity.plantArrayList.get(id).getPictureId() != null){
             ImageView imageView = findViewById(R.id.imageEdit);
-            imageView.setImageResource(plant.getPictureId());
+            imageView.setImageResource(MainActivity.plantArrayList.get(id).getPictureId());
         }
 
     }

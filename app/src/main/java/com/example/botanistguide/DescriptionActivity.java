@@ -1,7 +1,6 @@
 package com.example.botanistguide;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,10 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.gson.Gson;
-
 public class DescriptionActivity extends AppCompatActivity {
-    private Plant plant;
+    private int id;
 
 
     @Override
@@ -30,34 +27,25 @@ public class DescriptionActivity extends AppCompatActivity {
             return insets;
         });
 
-        plant = getIntent().getParcelableExtra("plant");
+        id = getIntent().getIntExtra("id",0);
 
         TextView name = findViewById(R.id.textView_plant_name_desciption);
-        name.setText("Название: " + plant.getName());
+        name.setText("Название: " + MainActivity.plantArrayList.get(id).getName());
 
         TextView description = findViewById(R.id.textView_plant_description_desciption);
-        description.setText("Описание" + plant.getDescription());
+        description.setText("Описание: " + MainActivity.plantArrayList.get(id).getDescription());
 
         TextView wateringDays = findViewById(R.id.textView_plant_wateringDays_desciption);
-        wateringDays.setText("Дни между поливами: " + String.valueOf(plant.getWateringDays()));
+        wateringDays.setText("Дни между поливами: " + String.valueOf(MainActivity.plantArrayList.get(id).getWateringDays()));
 
         ImageView image = findViewById(R.id.plant_image_description);
-        image.setImageResource(plant.getPictureId());
+        image.setImageResource(MainActivity.plantArrayList.get(id).getPictureId());
 
-        if(plant.getPlantingDate() != null){
+        if(MainActivity.plantArrayList.get(id).getPlantingDate() != null){
             TextView plantingDays = findViewById(R.id.textView_plant_date_desciption);
-            plantingDays.setText("Дата посадки: "+plant.getPlantingDate());
+            plantingDays.setText("Дата посадки: "+MainActivity.plantArrayList.get(id).getPlantingDate());
         }
 
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(MainActivity.plantArrayList);
-        SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
-        prefs.edit().putString("plants_list", json).apply();
     }
 
 
@@ -68,7 +56,7 @@ public class DescriptionActivity extends AppCompatActivity {
     }
     public void onClickEditButton(View v){
         Intent intent = new Intent(DescriptionActivity.this, EditActivity.class);
-        intent.putExtra("plant", plant);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

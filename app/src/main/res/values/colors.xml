@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="green_50">#E8F5E9</color>
+<color name="green_100">#C8E6C9</color>
+<color name="green_200">#A5D6A7</color>
+<color name="green_300">#81C784</color>
+<color name="green_500">#4CAF50</color>
+<color name="green_700">#388E3C</color>
+<color name="green_800">#2E7D32</color>
+<color name="green_900">#1B5E20</color>
+
+    <!-- Светло-зеленые (акценты) -->
+<color name="light_green_200">#DCEDC8</color>
+<color name="light_green_500">#8BC34A</color>
+
+    <!-- Коричневые (для земли/стволов) -->
+<color name="brown_200">#D7CCC8</color>
+<color name="brown_500">#795548</color>
+
+    <!-- Базовые цвета -->
+<color name="white">#FFFFFF</color>
+<color name="black">#000000</color>
+
+    <!-- Цвета ошибок -->
+<color name="red_100">#FFCDD2</color>
+<color name="red_400">#EF5350</color>
+
+
+    <color name="light_green_700">#689F38</color>
 </resources>

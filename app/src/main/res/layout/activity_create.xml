@@ -7,45 +7,73 @@
     android:layout_height="match_parent"
     tools:context=".CreateActivity">
 
+    <Button
+        android:id="@+id/create_plant_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="550dp"
+        android:onClick="onClickCreate"
+        android:text="добавить"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_create_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="30dp"
+        android:onClick="onClickCancel"
+        android:text="отменить"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="230dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/create_name_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:hint="Название"
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/create_wateringDays_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:hint="Количество дней между поливами"
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/create_data_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Дата"
             android:inputType="date" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/create_description_editText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="386dp"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:gravity="start|right"
+            android:hint="Описание"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:scrollHorizontally="false"
+            android:singleLine="false" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
