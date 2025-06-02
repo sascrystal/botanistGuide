@@ -29,8 +29,8 @@ public class EditActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        id = getIntent().getIntExtra("id",0); // ебать я даун
         setPreviousData();
-        id = getIntent().getIntExtra("id",0);
     }
     public void onClickEdit(View v){
         EditText name = findViewById(R.id.nameEdit);

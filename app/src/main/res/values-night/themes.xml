@@ -45,6 +45,7 @@
 
         <!-- Настройки текста -->
         <item name="textAppearanceTitleLarge">@style/TextAppearance.BotanistGuide.Title.Large.Dark</item>
+
     </style>
 
     <!-- Стили текста для светлой темы -->
