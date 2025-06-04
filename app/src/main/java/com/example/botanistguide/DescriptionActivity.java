@@ -28,9 +28,12 @@ public class DescriptionActivity extends AppCompatActivity {
         });
 
         id = getIntent().getIntExtra("id",0);
+        setDescription();
 
+    }
+    private  void setDescription(){
         TextView name = findViewById(R.id.textView_plant_name_desciption);
-        name.setText("Название: " + MainActivity.plantArrayList.get(id).getName());
+        name.setText(MainActivity.plantArrayList.get(id).getName());
 
         TextView description = findViewById(R.id.textView_plant_description_desciption);
         description.setText("Описание: " + MainActivity.plantArrayList.get(id).getDescription());
@@ -41,11 +44,13 @@ public class DescriptionActivity extends AppCompatActivity {
         ImageView image = findViewById(R.id.plant_image_description);
         image.setImageResource(MainActivity.plantArrayList.get(id).getPictureId());
 
-        if(MainActivity.plantArrayList.get(id).getPlantingDate() != null){
+        if(MainActivity.plantArrayList.get(id).getPlantingDate() != null && !MainActivity.plantArrayList.get(id).getPlantingDate().isEmpty()){
             TextView plantingDays = findViewById(R.id.textView_plant_date_desciption);
             plantingDays.setText("Дата посадки: "+MainActivity.plantArrayList.get(id).getPlantingDate());
+        }else{
+            TextView plantingDays = findViewById(R.id.textView_plant_date_desciption);
+            plantingDays.setText("Дата посадки: не назначена");
         }
-
     }
 
 
