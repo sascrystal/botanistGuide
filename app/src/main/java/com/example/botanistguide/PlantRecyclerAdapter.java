@@ -41,7 +41,7 @@ public class PlantRecyclerAdapter extends  RecyclerView.Adapter<PlantRecyclerAda
 
     public void onBindViewHolder(PlantRecyclerAdapter.ViewHolder holder, int position) {
         Plant plant = plantList.get(position);
-        holder.nameText.setText("Название: "+plant.getName());
+        holder.nameText.setText(plant.getName());
         if(plant.getPlantingDate() != null){
             holder.dateText.setText("Дата посадки: "+plant.getPlantingDate());
         }else {

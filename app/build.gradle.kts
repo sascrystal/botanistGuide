@@ -34,6 +34,7 @@ android {
 dependencies {
 
     implementation(libs.google.gson)
+    implementation (libs.cardview)
 
     implementation(libs.appcompat)
     implementation(libs.material)
